@@ -1,6 +1,8 @@
 package battle;
 
-class Belt extends MultipleAbilityGear {
+import Gear.AbstractGear;
+
+public class Belt extends MultipleAbilityGear {
 
   private final BeltSize size;
 
@@ -14,11 +16,20 @@ class Belt extends MultipleAbilityGear {
     );
   }
 
-  public Belt(String name, BeltSize beltSize, boolean isDetrimental, int ...random)
+  Belt(String name, BeltSize beltSize, boolean isDetrimental, int ...random)
       throws IllegalArgumentException {
     super(name, random);
     this.size = beltSize;
     this.setAbilities(randomizer.getAbility(isDetrimental), randomizer.getAbility(isDetrimental));
+  }
+
+  public int getSize() {
+    return size.getSize();
+  }
+
+  @Override
+  public boolean isBelt () {
+    return true;
   }
 
   @Override

@@ -1,13 +1,13 @@
 package battle;
 
-class Potion extends SingleAbilityGear {
+public class Potion extends SingleAbilityGear {
 
   public Potion(String name, boolean isDetrimental) {
     super(name);
     this.setAbility(randomizer.getAbility(isDetrimental));
   }
 
-  public Potion(String name, boolean isDetrimental, int ...random) {
+  Potion(String name, boolean isDetrimental, int ...random) {
     super(name, random);
     this.setAbility(randomizer.getAbility(isDetrimental));
   }
@@ -35,6 +35,11 @@ class Potion extends SingleAbilityGear {
   @Override
   public boolean givesDexterity() {
     return ability.isDexterity();
+  }
+
+  @Override
+  public boolean isPotion() {
+    return true;
   }
 
   @Override

@@ -1,8 +1,8 @@
 package battle;
 
-class FootGear extends SingleAbilityGear {
+public class FootGear extends SingleAbilityGear {
 
-  protected FootGear(String name, boolean isDetrimental) throws IllegalArgumentException {
+  public FootGear(String name, boolean isDetrimental) throws IllegalArgumentException {
     super(name);
     this.setAbility(
         isDetrimental
@@ -11,7 +11,7 @@ class FootGear extends SingleAbilityGear {
     );
   }
 
-  protected FootGear(String name, boolean isDetrimental, int ...random)
+  FootGear(String name, boolean isDetrimental, int ...random)
       throws IllegalArgumentException {
     super(name, random);
     this.setAbility(
@@ -28,6 +28,11 @@ class FootGear extends SingleAbilityGear {
 
   @Override
   public boolean givesDexterity() {
+    return true;
+  }
+
+  @Override
+  public boolean isFootGear() {
     return true;
   }
 

@@ -5,7 +5,7 @@ class Katanas extends Sword {
     super(name);
   }
 
-  public Katanas(String name, int ...random) {
+  Katanas(String name, int ...random) {
     super(name, random);
   }
 

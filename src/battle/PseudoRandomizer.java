@@ -1,5 +1,7 @@
 package battle;
 
+import ability.*;
+
 class PseudoRandomizer implements Randomizer {
 
   int[] fakeRandom;

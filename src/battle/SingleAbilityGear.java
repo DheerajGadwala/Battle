@@ -1,24 +1,19 @@
 package battle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 abstract class SingleAbilityGear extends AbstractGear {
 
-  protected final String name;
   protected AbstractAbility ability;
 
   protected SingleAbilityGear(String name)
       throws IllegalArgumentException {
-    if (name == null || name.isEmpty()) {
-      throw new IllegalArgumentException("Gear name can not be null or empty.");
-    }
-    this.name = name;
+    super(name);
   }
 
   protected SingleAbilityGear(String name, int ...random) {
-    super(random);
-    if (name == null || name.isEmpty()) {
-      throw new IllegalArgumentException("Gear name can not be null or empty.");
-    }
-    this.name = name;
+    super(name, random);
   }
 
   protected void setAbility(AbstractAbility ability) {
@@ -26,6 +21,13 @@ abstract class SingleAbilityGear extends AbstractGear {
   }
 
   abstract int getAbilityMagnitude();
+
+  @Override
+  public List<AbstractAbility> getAbilities() {
+    List<AbstractAbility> ret = new ArrayList<AbstractAbility>();
+    ret.add(ability);
+    return ret;
+  }
 
   public String getName() {
     return this.name;

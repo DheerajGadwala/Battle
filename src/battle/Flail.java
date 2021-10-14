@@ -6,7 +6,7 @@ class Flail extends AbstractWeapon {
     super(name);
   }
 
-  public Flail(String name, int ...random) {
+  Flail(String name, int ...random) {
     super(name, random);
   }
 

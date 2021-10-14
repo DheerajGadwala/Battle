@@ -6,7 +6,7 @@ class BroadSword extends Sword {
     super(name);
   }
 
-  public BroadSword(String name, int ...random) {
+  BroadSword(String name, int ...random) {
     super(name, random);
   }
 

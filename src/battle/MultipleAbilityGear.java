@@ -5,24 +5,16 @@ import java.util.List;
 
 abstract class MultipleAbilityGear extends AbstractGear {
 
-  protected final String name;
   protected List<AbstractAbility> abilities;
 
   protected MultipleAbilityGear(String name)
       throws IllegalArgumentException {
-    if (name == null || name.isEmpty()) {
-      throw new IllegalArgumentException("Name can not be null or empty.");
-    }
-    this.name = name;
+    super(name);
   }
 
   protected MultipleAbilityGear(String name, int ...random)
       throws IllegalArgumentException {
-    super(random);
-    if (name == null || name.isEmpty()) {
-      throw new IllegalArgumentException("Name can not be null or empty.");
-    }
-    this.name = name;
+    super(name, random);
   }
 
   @Override
@@ -41,6 +33,12 @@ abstract class MultipleAbilityGear extends AbstractGear {
           + size + " elements, you asked for the "
           + i + " th index.");
     }
+  }
+
+
+  @Override
+  public List<AbstractAbility> getAbilities() {
+    return abilities;
   }
 
   public int getMagnitude(int i) throws IllegalArgumentException {

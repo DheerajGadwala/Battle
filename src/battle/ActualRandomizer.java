@@ -1,5 +1,7 @@
 package battle;
 
+import ability.*;
+
 import java.util.Random;
 
 /**
@@ -10,8 +12,9 @@ import java.util.Random;
  */
 class ActualRandomizer implements Randomizer {
 
+  Random rand = new Random();
+
   public int getIntBetween(int a, int b) {
-    Random rand = new Random();
     return rand.nextInt(b - a + 1) + a;
   }
 
@@ -39,18 +42,19 @@ class ActualRandomizer implements Randomizer {
    * @return An abstract ability
    */
   public AbstractAbility getAbility(boolean isDetrimental) {
-    int r = (isDetrimental ? -1 : 1) * getIntBetween(1, 4);
+    int r = getIntBetween(1, 4);
+    int sign = (isDetrimental ? -1 : 1);
     if (r == 1) {
-      return new Charisma(getIntBetween(1, 3));
+      return new Charisma(sign * getIntBetween(1, 3));
     }
     else if (r == 2) {
-      return new Constitution(getIntBetween(1, 3));
+      return new Constitution(sign * getIntBetween(1, 3));
     }
     else if (r == 3) {
-      return new Dexterity(getIntBetween(1, 3));
+      return new Dexterity(sign * getIntBetween(1, 3));
     }
     else {
-      return new Strength(getIntBetween(1, 3));
+      return new Strength(sign * getIntBetween(1, 3));
     }
   }
 }

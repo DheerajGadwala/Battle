@@ -3,7 +3,7 @@ package battle;
 abstract class AbstractWeapon implements Weapon {
 
   protected final String name;
-  protected Player wielder;
+  protected HumanPlayer wielder;
   protected final Randomizer randomizer;
 
   protected AbstractWeapon(String name) {
@@ -16,7 +16,7 @@ abstract class AbstractWeapon implements Weapon {
     randomizer = new PseudoRandomizer(random);
   }
 
-  void setWielder(Player wielder) {
+  void setWielder(HumanPlayer wielder) {
     this.wielder = wielder;
   }
 

@@ -6,7 +6,7 @@ class Axe extends AbstractWeapon {
     super(name);
   }
 
-  public Axe(String name, int ...random) {
+  Axe(String name, int ...random) {
     super(name, random);
   }
 

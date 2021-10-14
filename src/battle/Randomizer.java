@@ -1,5 +1,7 @@
 package battle;
 
+import ability.AbstractAbility;
+
 interface Randomizer {
 
   /**

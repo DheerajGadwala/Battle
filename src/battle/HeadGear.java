@@ -1,8 +1,8 @@
 package battle;
 
-class HeadGear extends SingleAbilityGear {
+public class HeadGear extends SingleAbilityGear {
 
-  protected HeadGear(String name, boolean isDetrimental)
+  public HeadGear(String name, boolean isDetrimental)
       throws IllegalArgumentException {
     super(name);
     this.setAbility(
@@ -12,7 +12,7 @@ class HeadGear extends SingleAbilityGear {
     );
   }
 
-  protected HeadGear(String name, boolean isDetrimental, int ...random)
+  HeadGear(String name, boolean isDetrimental, int ...random)
       throws IllegalArgumentException {
     super(name, random);
     this.setAbility(
@@ -29,6 +29,11 @@ class HeadGear extends SingleAbilityGear {
 
   @Override
   public boolean givesConstitution() {
+    return true;
+  }
+
+  @Override
+  public boolean isHeadGear() {
     return true;
   }
 
