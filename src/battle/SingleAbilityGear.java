@@ -33,19 +33,4 @@ abstract class SingleAbilityGear extends AbstractGear {
     return this.name;
   }
 
-  protected boolean givesCharisma() {
-    return false;
-  }
-
-  protected boolean givesStrength() {
-    return false;
-  }
-
-  protected boolean givesConstitution() {
-    return false;
-  }
-
-  protected boolean givesDexterity() {
-    return false;
-  }
 }

@@ -17,12 +17,17 @@ class Flail extends AbstractWeapon {
 
   @Override
   public double getDamage() {
-    if (this.wielder.effectiveDexterity() < 15) {
-      return randomizer.getIntBetween(8, 12) / 2.0;
+    AbstractPlayer p = (AbstractPlayer) wielder;
+    if(p.isBattlePlayer()) {
+      BattlePlayer bp = (BattlePlayer)p;
+      if (bp.effectiveDexterity() < 15) {
+        return randomizer.getIntBetween(8, 12) / 2.0;
+      }
+      else {
+        return randomizer.getIntBetween(8, 12);
+      }
     }
-    else {
-      return randomizer.getIntBetween(8, 12);
-    }
+    throw new IllegalStateException("Invalid player type.");
   }
 
   @Override

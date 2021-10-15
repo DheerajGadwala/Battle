@@ -17,12 +17,17 @@ class TwoHandedSword extends Sword {
 
   @Override
   public double getDamage() {
-    if (this.wielder.effectiveStrength() < 15) {
-      return randomizer.getIntBetween(8, 12) / 2.0;
+    AbstractPlayer p = (AbstractPlayer)this.wielder;
+    if(p.isBattlePlayer()) {
+        BattlePlayer bp = (BattlePlayer)p;
+      if (bp.effectiveStrength() < 15) {
+        return randomizer.getIntBetween(8, 12) / 2.0;
+      }
+      else {
+        return randomizer.getIntBetween(8, 12);
+      }
     }
-    else {
-      return randomizer.getIntBetween(8, 12);
-    }
+    throw new IllegalStateException("Invalid player type");
   }
 
   @Override

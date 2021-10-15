@@ -116,6 +116,11 @@ public class BattlePlayer extends AbstractPlayer {
   }
 
   @Override
+  public boolean isBattlePlayer() {
+    return true;
+  }
+
+  @Override
   public void equipGear(Gear gear) throws IllegalArgumentException {
     if (gear == null) {
       throw new IllegalArgumentException("gear can not be null");
@@ -193,11 +198,6 @@ public class BattlePlayer extends AbstractPlayer {
     }
     health += gear.getAbilities().get(0).getValue();
     this.gear = this.gear.insert(gear, Comparable::compareTo);
-  }
-
-  @Override
-  public boolean isBattlePlayer() {
-    return true;
   }
 
   @Override

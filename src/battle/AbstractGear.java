@@ -6,19 +6,19 @@ abstract class AbstractGear implements Gear {
 
   protected final String name;
 
-  protected AbstractGear(String name) {
+  protected AbstractGear(String name)  throws IllegalArgumentException {
     this.randomizer = new ActualRandomizer();
     constructionHelper(name);
     this.name = name;
   }
 
-  protected AbstractGear(String name, int ...random) {
+  protected AbstractGear(String name, int ...random)  throws IllegalArgumentException {
     this.randomizer = new PseudoRandomizer(random);
     constructionHelper(name);
     this.name = name;
   }
 
-  private void constructionHelper(String name) {
+  private void constructionHelper(String name) throws IllegalArgumentException {
     if (name == null || name.isEmpty()) {
       throw new IllegalArgumentException("Name can not be null or empty.");
     }
@@ -58,6 +58,22 @@ abstract class AbstractGear implements Gear {
 
   protected int compareTo(FootGear that) {
     return 1;
+  }
+
+  protected boolean givesCharisma() {
+    return false;
+  }
+
+  protected boolean givesStrength() {
+    return false;
+  }
+
+  protected boolean givesConstitution() {
+    return false;
+  }
+
+  protected boolean givesDexterity() {
+    return false;
   }
 
 }

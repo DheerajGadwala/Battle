@@ -1,5 +1,7 @@
 package battle;
 
+import java.util.List;
+
 public class Belt extends MultipleAbilityGear {
 
   private final BeltSize size;
@@ -42,6 +44,30 @@ public class Belt extends MultipleAbilityGear {
     }
     AbstractGear that = (AbstractGear) o;
     return that.compareTo(this);
+  }
+
+  @Override
+  public boolean givesCharisma() {
+    List<AbstractAbility> abilities = this.getAbilities();
+    return abilities.get(0).isCharisma() || abilities.get(1).isCharisma();
+  }
+
+  @Override
+  public boolean givesStrength() {
+    List<AbstractAbility> abilities = this.getAbilities();
+    return abilities.get(0).isStrength() || abilities.get(1).isStrength();
+  }
+
+  @Override
+  public boolean givesConstitution() {
+    List<AbstractAbility> abilities = this.getAbilities();
+    return abilities.get(0).isConstitution() || abilities.get(1).isConstitution();
+  }
+
+  @Override
+  public boolean givesDexterity() {
+    List<AbstractAbility> abilities = this.getAbilities();
+    return abilities.get(0).isDexterity() || abilities.get(1).isDexterity();
   }
 
   @Override
