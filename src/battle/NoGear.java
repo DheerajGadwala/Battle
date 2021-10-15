@@ -1,8 +1,5 @@
 package battle;
 
-import Gear.AbstractGear;
-import ability.AbstractAbility;
-
 import java.util.ArrayList;
 import java.util.List;
 

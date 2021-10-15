@@ -1,10 +1,15 @@
-import battle.HumanPlayer;
+import battle.Battle;
+import battle.BattleArena;
+import battle.BattlePlayer;
 import battle.Player;
 
 public class Driver {
   public static void main(String[] args) {
-    Player a = new HumanPlayer("Dheeraj");
-    Player b = new HumanPlayer("Dheeraj");
-    System.out.println(a.toString());
+    Player a = new BattlePlayer("Me");
+    Player b = new BattlePlayer("Myself");
+    Battle battle = new BattleArena(a, b);
+    battle.distributeGear();
+    battle.grantWeapons();
+    battle.startBattle();
   }
 }

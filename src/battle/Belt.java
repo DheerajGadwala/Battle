@@ -1,7 +1,5 @@
 package battle;
 
-import Gear.AbstractGear;
-
 public class Belt extends MultipleAbilityGear {
 
   private final BeltSize size;
@@ -11,8 +9,8 @@ public class Belt extends MultipleAbilityGear {
     super(name);
     this.size = beltSize;
     this.setAbilities(
-        randomizer.getAbility(isDetrimental),
-        randomizer.getAbility(isDetrimental)
+        randomizer.getBeltAbility(isDetrimental, beltSize),
+        randomizer.getBeltAbility(isDetrimental, beltSize)
     );
   }
 
@@ -49,8 +47,9 @@ public class Belt extends MultipleAbilityGear {
   @Override
   public String toString() {
     return String.format(
-        "%s [Belt], Abilities: #1: %s, #2: %s",
+        "%s [Belt], Size: %s, Abilities: #1: %s, #2: %s",
         this.name,
+        this.size.toString(),
         this.abilities.get(0).toString(),
         this.abilities.get(1).toString()
     );

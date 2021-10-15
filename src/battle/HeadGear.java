@@ -1,6 +1,6 @@
 package battle;
 
-public class HeadGear extends SingleAbilityGear {
+class HeadGear extends SingleAbilityGear {
 
   public HeadGear(String name, boolean isDetrimental)
       throws IllegalArgumentException {
@@ -39,7 +39,7 @@ public class HeadGear extends SingleAbilityGear {
 
   @Override
   public int compareTo(Potion that) {
-    return -1;
+    return 1;
   }
 
   @Override

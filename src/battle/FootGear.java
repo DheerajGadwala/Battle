@@ -1,13 +1,13 @@
 package battle;
 
-public class FootGear extends SingleAbilityGear {
+class FootGear extends SingleAbilityGear {
 
   public FootGear(String name, boolean isDetrimental) throws IllegalArgumentException {
     super(name);
     this.setAbility(
         isDetrimental
-            ? new Constitution(-randomizer.getIntBetween(1, 3))
-            : new Constitution(randomizer.getIntBetween(1, 3))
+            ? new Dexterity(-randomizer.getIntBetween(1, 3))
+            : new Dexterity(randomizer.getIntBetween(1, 3))
     );
   }
 
@@ -16,8 +16,8 @@ public class FootGear extends SingleAbilityGear {
     super(name, random);
     this.setAbility(
         isDetrimental
-            ? new Constitution(-randomizer.getIntBetween(1, 3))
-            : new Constitution(randomizer.getIntBetween(1, 3))
+            ? new Dexterity(-randomizer.getIntBetween(1, 3))
+            : new Dexterity(randomizer.getIntBetween(1, 3))
     );
   }
 
@@ -38,7 +38,7 @@ public class FootGear extends SingleAbilityGear {
 
   @Override
   public int compareTo(Belt that) {
-    return 1;
+    return -1;
   }
 
   @Override

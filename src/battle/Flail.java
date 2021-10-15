@@ -24,4 +24,10 @@ class Flail extends AbstractWeapon {
       return randomizer.getIntBetween(8, 12);
     }
   }
+
+  @Override
+  public String toString() {
+    return String.format("Name: %s, Type: Flail", name);
+  }
+
 }

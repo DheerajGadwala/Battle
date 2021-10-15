@@ -1,55 +1,47 @@
 package battle;
 
-import Gear.AbstractGear;
+abstract class AbstractPlayer implements Player {
 
-import java.util.List;
-
-public abstract class AbstractPlayer implements Player {
-
-  protected final List<Organ> organs;
   protected final Randomizer randomizer;
   protected final String name;
-
+  protected GearList gear;
   protected double health;
+  protected Weapon weapon;
 
-  protected AbstractPlayer (String name, List<Organ> organs) throws IllegalArgumentException{
+  protected AbstractPlayer(String name) throws IllegalArgumentException {
     constructionHelper(name);
     this.name = name;
-    this.organs = organs;
+    this.gear = new EmptyGearNode();
     this.randomizer = new ActualRandomizer();
   }
 
-  protected AbstractPlayer(String name, List<Organ> organs, int ...random) {
+  protected AbstractPlayer(String name, int ...random) {
     constructionHelper(name);
     this.name = name;
-    this.organs = organs;
+    this.gear = new EmptyGearNode();
     this.randomizer = new PseudoRandomizer(random);
   }
 
   private void constructionHelper(String name) {
-    if(name == null || name.isEmpty()) {
+    if (name == null || name.isEmpty()) {
       throw new IllegalArgumentException("Name can not be null or empty");
     }
   }
 
-  protected boolean isHuman() {
+  @Override
+  public String getName() {
+    return name;
+  }
+
+  protected boolean isBattlePlayer() {
     return false;
   }
 
-  @Override
-  public void addGear(Gear gear) {
-    for (Organ o : organs) {
-      try {
-        o.addGear((AbstractGear) gear);
-        return;
-      }
-      catch (IllegalStateException | IllegalArgumentException e) {
-        continue;
-      }
-    }
-    throw  new IllegalArgumentException("Gear incompatible");
-  }
+  abstract boolean isAlive();
 
-  abstract void attack(AbstractPlayer player);
+  abstract void assignWeapon(Weapon weapon);
 
+  abstract void flush();
+
+  abstract void attack(AbstractPlayer two);
 }

@@ -1,8 +1,12 @@
 package battle;
 
+/**
+ * This represents a battle.
+ * A battle can have two players.
+ *
+ */
 public interface Battle {
-  void addPlayerOne(Player player);
-  void addPlayerTwo(Player player);
-  void splitBag();
+  void distributeGear();
+  void grantWeapons();
   void startBattle();
 }

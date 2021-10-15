@@ -1,6 +1,6 @@
 package battle;
 
-import ability.AbstractAbility;
+import java.util.List;
 
 interface Randomizer {
 
@@ -22,7 +22,21 @@ interface Randomizer {
    * Generates a random ability.
    * Used to create random potions.
    * @param isDetrimental if the ability should be detrimental or not.
-   * @return An abstract ability
+   * @return An abstract ability.
    */
   AbstractAbility getAbility(boolean isDetrimental);
+
+  /**
+   * Shuffles the given list of objects.
+   * @param list of shuffled objects.
+   */
+  void shuffle(List<Object> list);
+
+  /**
+   * Returns  a random ability for specifically for belts.
+   * @param isDetrimental if the ability should be detrimental or not.
+   * @param beltSize size of the belt.
+   * @return a random ability.
+   */
+  AbstractAbility getBeltAbility(boolean isDetrimental, BeltSize beltSize);
 }

@@ -1,6 +1,6 @@
 package battle;
 
-public class Potion extends SingleAbilityGear {
+class Potion extends SingleAbilityGear {
 
   public Potion(String name, boolean isDetrimental) {
     super(name);

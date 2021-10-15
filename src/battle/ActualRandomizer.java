@@ -1,27 +1,19 @@
 package battle;
 
-import ability.*;
-
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
-/**
- * This can be used in various randomization scenarios.
- * Generating numbers for player abilities.
- * Generating numbers for item abilities.
- * Generating random damage values.
- */
 class ActualRandomizer implements Randomizer {
 
   Random rand = new Random();
 
+  @Override
   public int getIntBetween(int a, int b) {
     return rand.nextInt(b - a + 1) + a;
   }
 
-  /**
-   * Generates abilities values for players.
-   * @return an integer
-   */
+  @Override
   public int getPlayerAbilityValue() {
     int value = 0;
     int count = 0;
@@ -35,26 +27,46 @@ class ActualRandomizer implements Randomizer {
     return value;
   }
 
-  /**
-   * Generates a random ability.
-   * Used to create random potions.
-   * @param isDetrimental if the ability should be detrimental or not.
-   * @return An abstract ability
-   */
+  @Override
   public AbstractAbility getAbility(boolean isDetrimental) {
     int r = getIntBetween(1, 4);
     int sign = (isDetrimental ? -1 : 1);
     if (r == 1) {
-      return new Charisma(sign * getIntBetween(1, 3));
+      return new Charisma(sign * getIntBetween(1, 4));
     }
     else if (r == 2) {
-      return new Constitution(sign * getIntBetween(1, 3));
+      return new Constitution(sign * getIntBetween(1, 4));
     }
     else if (r == 3) {
-      return new Dexterity(sign * getIntBetween(1, 3));
+      return new Dexterity(sign * getIntBetween(1, 4));
     }
     else {
-      return new Strength(sign * getIntBetween(1, 3));
+      return new Strength(sign * getIntBetween(1, 4));
+    }
+  }
+
+  @Override
+  public void shuffle(List<Object> list) {
+    Collections.shuffle(list);
+  }
+
+  @Override
+  public AbstractAbility getBeltAbility(boolean isDetrimental, BeltSize beltSize) {
+    int r = getIntBetween(1, 4);
+    int sign = (isDetrimental ? -1 : 1);
+    int x = beltSize == BeltSize.LARGE ? 3 : beltSize == BeltSize.MEDIUM ? 2 : 1;
+    int y = beltSize == BeltSize.LARGE ? 5 : beltSize == BeltSize.MEDIUM ? 4 : 3;
+    if (r == 1) {
+      return new Charisma(sign * getIntBetween(x, y));
+    }
+    else if (r == 2) {
+      return new Constitution(sign * getIntBetween(x, y));
+    }
+    else if (r == 3) {
+      return new Dexterity(sign * getIntBetween(x, y));
+    }
+    else {
+      return new Strength(sign * getIntBetween(x, y));
     }
   }
 }

@@ -24,7 +24,7 @@ abstract class SingleAbilityGear extends AbstractGear {
 
   @Override
   public List<AbstractAbility> getAbilities() {
-    List<AbstractAbility> ret = new ArrayList<AbstractAbility>();
+    List<AbstractAbility> ret = new ArrayList<>();
     ret.add(ability);
     return ret;
   }

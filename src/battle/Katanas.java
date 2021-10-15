@@ -16,6 +16,11 @@ class Katanas extends Sword {
 
   @Override
   public double getDamage() {
-    return randomizer.getIntBetween(4, 6) + randomizer.getIntBetween(4, 6);
+    return randomizer.getIntBetween(4, 6);
+  }
+
+  @Override
+  public String toString() {
+    return String.format("Name: %s, Type: Katanas", name);
   }
 }

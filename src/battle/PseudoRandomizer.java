@@ -1,6 +1,6 @@
 package battle;
 
-import ability.*;
+import java.util.List;
 
 class PseudoRandomizer implements Randomizer {
 
@@ -38,5 +38,14 @@ class PseudoRandomizer implements Randomizer {
     else {
       return new Strength(val);
     }
+  }
+
+  @Override
+  public void shuffle(List<Object> list) {
+  }
+
+  @Override
+  public AbstractAbility getBeltAbility(boolean isDetrimental, BeltSize beltSize) {
+    return getAbility(isDetrimental);
   }
 }

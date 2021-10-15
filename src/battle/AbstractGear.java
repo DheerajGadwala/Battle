@@ -40,22 +40,24 @@ abstract class AbstractGear implements Gear {
     return false;
   }
 
-  protected boolean isNoGear() {return false;}
+  protected boolean isNoGear() {
+    return false;
+  }
 
   protected int compareTo(HeadGear that) {
-    return 1;
+    return -1;
   }
 
   protected int compareTo(Potion that) {
-    return 1;
+    return -1;
   }
 
   protected int compareTo(Belt that) {
-    return -1;
+    return 1;
   }
 
   protected int compareTo(FootGear that) {
-    return -1;
+    return 1;
   }
 
 }
