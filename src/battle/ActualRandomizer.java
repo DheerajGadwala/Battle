@@ -4,13 +4,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-class ActualRandomizer implements Randomizer {
+/**
+ * This can be used to generate random number and random abilities with random magnitudes.
+ */
+public class ActualRandomizer implements Randomizer {
 
   Random rand = new Random();
 
   @Override
   public int getIntBetween(int a, int b) {
-    return rand.nextInt(b - a + 1) + a;
+    int randomNumber = rand.nextInt(b - a + 1) + a;
+    return randomNumber;
   }
 
   @Override
@@ -28,7 +32,7 @@ class ActualRandomizer implements Randomizer {
   }
 
   @Override
-  public AbstractAbility getAbility(boolean isDetrimental) {
+  public Ability getAbility(boolean isDetrimental) {
     int r = getIntBetween(1, 4);
     int sign = (isDetrimental ? -1 : 1);
     if (r == 1) {
@@ -51,7 +55,7 @@ class ActualRandomizer implements Randomizer {
   }
 
   @Override
-  public AbstractAbility getBeltAbility(boolean isDetrimental, BeltSize beltSize) {
+  public Ability getBeltAbility(boolean isDetrimental, BeltSize beltSize) {
     int r = getIntBetween(1, 4);
     int sign = (isDetrimental ? -1 : 1);
     int x = beltSize == BeltSize.LARGE ? 3 : beltSize == BeltSize.MEDIUM ? 2 : 1;

@@ -9,23 +9,8 @@ abstract class AbstractAbility implements Ability {
   }
 
   @Override
-  public int getValue() {
+  public int getMagnitude() {
     return value;
   }
 
-  protected boolean isCharisma() {
-    return false;
-  }
-
-  protected boolean isDexterity() {
-    return false;
-  }
-
-  protected boolean isStrength() {
-    return false;
-  }
-
-  protected boolean isConstitution() {
-    return false;
-  }
 }

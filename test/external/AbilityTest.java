@@ -1,13 +1,17 @@
-package battle;
+package external;
 
+import battle.Ability;
+import battle.Charisma;
+import battle.Constitution;
+import battle.Dexterity;
+import battle.Strength;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Test suite for Ability.
+ * This is an internal test.
  */
 public class AbilityTest {
 
@@ -32,7 +36,7 @@ public class AbilityTest {
    */
   @Test
   public void testValidIsCharisma() {
-    Assert.assertTrue(((AbstractAbility)ability1).isCharisma());
+    Assert.assertTrue(ability1.isCharisma());
   }
 
   /**
@@ -40,7 +44,7 @@ public class AbilityTest {
    */
   @Test
   public void testValidIsStrength() {
-    Assert.assertTrue(((AbstractAbility)ability2).isStrength());
+    Assert.assertTrue(ability2.isStrength());
   }
 
   /**
@@ -48,7 +52,7 @@ public class AbilityTest {
    */
   @Test
   public void testValidIsDexterity() {
-    Assert.assertTrue(((AbstractAbility)ability3).isDexterity());
+    Assert.assertTrue(ability3.isDexterity());
   }
 
   /**
@@ -56,7 +60,7 @@ public class AbilityTest {
    */
   @Test
   public void testValidIsConstitution() {
-    Assert.assertTrue(((AbstractAbility)ability4).isConstitution());
+    Assert.assertTrue(ability4.isConstitution());
   }
 
   /**
@@ -64,7 +68,7 @@ public class AbilityTest {
    */
   @Test
   public void testInValidIsCharisma() {
-    Assert.assertFalse(((AbstractAbility)ability2).isCharisma());
+    Assert.assertFalse(ability2.isCharisma());
   }
 
   /**
@@ -72,7 +76,7 @@ public class AbilityTest {
    */
   @Test
   public void testInValidIsStrength() {
-    Assert.assertFalse(((AbstractAbility)ability3).isStrength());
+    Assert.assertFalse(ability3.isStrength());
   }
 
   /**
@@ -80,7 +84,7 @@ public class AbilityTest {
    */
   @Test
   public void testInValidIsDexterity() {
-    Assert.assertFalse(((AbstractAbility)ability4).isDexterity());
+    Assert.assertFalse(ability4.isDexterity());
   }
 
   /**
@@ -88,7 +92,7 @@ public class AbilityTest {
    */
   @Test
   public void testInValidIsConstitution() {
-    Assert.assertFalse(((AbstractAbility)ability1).isConstitution());
+    Assert.assertFalse(ability1.isConstitution());
   }
 
   /**
@@ -96,6 +100,6 @@ public class AbilityTest {
    */
   @Test
   public void testGetValue() {
-    Assert.assertEquals(4, ability2.getValue());
+    Assert.assertEquals(4, ability2.getMagnitude());
   }
 }

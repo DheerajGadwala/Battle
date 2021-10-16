@@ -2,13 +2,27 @@ package battle;
 
 import java.util.List;
 
+/**
+ * This is a type of gear.
+ * This can give a player two abilities.
+ */
 public class Belt extends MultipleAbilityGear {
 
   private final BeltSize size;
 
+  /**
+   * Creates a belt object.
+   * @param name name of the gear
+   * @param beltSize size of the belt
+   * @param isDetrimental if the belt has a detrimental ability or not
+   * @throws IllegalArgumentException if name is null or empty.
+   */
   public Belt(String name, BeltSize beltSize, boolean isDetrimental)
       throws IllegalArgumentException {
     super(name);
+    if (beltSize == null) {
+      throw new IllegalArgumentException("Belt size can not be null");
+    }
     this.size = beltSize;
     this.setAbilities(
         randomizer.getBeltAbility(isDetrimental, beltSize),
@@ -16,19 +30,48 @@ public class Belt extends MultipleAbilityGear {
     );
   }
 
-  Belt(String name, BeltSize beltSize, boolean isDetrimental, int ...random)
+  /**
+   * Creates a belt object that has pseudo random abilities and their magnitudes.
+   * @param name name of the belt
+   * @param beltSize size of the belt
+   * @param isDetrimental if the belt has a detrimental ability or not
+   * @param random pseudo random numbers
+   * @throws IllegalArgumentException if name is null or empty
+   */
+  public Belt(String name, BeltSize beltSize, boolean isDetrimental, int... random)
       throws IllegalArgumentException {
     super(name, random);
+    if (beltSize == null) {
+      throw new IllegalArgumentException("Belt size can not be null");
+    }
     this.size = beltSize;
     this.setAbilities(randomizer.getAbility(isDetrimental), randomizer.getAbility(isDetrimental));
   }
 
-  public int getSize() {
+  /**
+   * Creates a belt object that might be random or pseudo random depending on the given input.
+   * @param name name of the belt
+   * @param beltSize size of the belt
+   * @param isDetrimental if the belt has a detrimental ability or not
+   * @param randomizer a randomizer object
+   * @throws IllegalArgumentException if name is null or empty
+   */
+  public Belt(String name, BeltSize beltSize, boolean isDetrimental, Randomizer randomizer)
+      throws IllegalArgumentException {
+    super(name, randomizer);
+    if (beltSize == null) {
+      throw new IllegalArgumentException("Belt size can not be null");
+    }
+    this.size = beltSize;
+    this.setAbilities(randomizer.getAbility(isDetrimental), randomizer.getAbility(isDetrimental));
+  }
+
+  int getSize() {
     return size.getSize();
   }
 
   @Override
-  public boolean isBelt () {
+  public boolean isBelt() {
     return true;
   }
 
@@ -38,35 +81,34 @@ public class Belt extends MultipleAbilityGear {
   }
 
   @Override
-  public int compareTo(Gear o) {
-    if (this == o) {
+  public int compareTo(Gear that) {
+    if (this == that) {
       return 0;
     }
-    AbstractGear that = (AbstractGear) o;
     return that.compareTo(this);
   }
 
   @Override
   public boolean givesCharisma() {
-    List<AbstractAbility> abilities = this.getAbilities();
+    List<Ability> abilities = this.getAbilities();
     return abilities.get(0).isCharisma() || abilities.get(1).isCharisma();
   }
 
   @Override
   public boolean givesStrength() {
-    List<AbstractAbility> abilities = this.getAbilities();
+    List<Ability> abilities = this.getAbilities();
     return abilities.get(0).isStrength() || abilities.get(1).isStrength();
   }
 
   @Override
   public boolean givesConstitution() {
-    List<AbstractAbility> abilities = this.getAbilities();
+    List<Ability> abilities = this.getAbilities();
     return abilities.get(0).isConstitution() || abilities.get(1).isConstitution();
   }
 
   @Override
   public boolean givesDexterity() {
-    List<AbstractAbility> abilities = this.getAbilities();
+    List<Ability> abilities = this.getAbilities();
     return abilities.get(0).isDexterity() || abilities.get(1).isDexterity();
   }
 

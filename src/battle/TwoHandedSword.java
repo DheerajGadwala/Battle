@@ -1,13 +1,36 @@
 package battle;
 
-class TwoHandedSword extends Sword {
+/**
+ * Two handed sword is a type of sword.
+ * Its damage depends on players' strength.
+ */
+public class TwoHandedSword extends Sword {
 
+  /**
+   * Creates a TwoHandedSword object.
+   * @param name name of the weapon
+   */
   public TwoHandedSword(String name) {
     super(name);
   }
 
-  TwoHandedSword(String name, int ...random) {
+  /**
+   * Creates a TwoHandedSword object with pseudo random values for damages.
+   * @param name name of the weapon
+   * @param random random numbers
+   */
+  public TwoHandedSword(String name, int... random) {
     super(name, random);
+  }
+
+  /**
+   * Creates a TwoHandedSword object whose damage might be random or
+   * pseudo random depending on the given randomizer object.
+   * @param name name of the weapon
+   * @param randomizer a randomizer object
+   */
+  public TwoHandedSword(String name, Randomizer randomizer) {
+    super(name, randomizer);
   }
 
   @Override
@@ -17,17 +40,12 @@ class TwoHandedSword extends Sword {
 
   @Override
   public double getDamage() {
-    AbstractPlayer p = (AbstractPlayer)this.wielder;
-    if(p.isBattlePlayer()) {
-        BattlePlayer bp = (BattlePlayer)p;
-      if (bp.effectiveStrength() < 15) {
-        return randomizer.getIntBetween(8, 12) / 2.0;
-      }
-      else {
-        return randomizer.getIntBetween(8, 12);
-      }
-    }
-    throw new IllegalStateException("Invalid player type");
+    return randomizer.getIntBetween(8, 12);
+  }
+
+  @Override
+  public double getMaxDamage() {
+    return 12;
   }
 
   @Override

@@ -1,9 +1,17 @@
-package battle;
+package external;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import battle.Belt;
+import battle.BeltSize;
+import battle.FootGear;
+import battle.Gear;
+import battle.HeadGear;
+import battle.Potion;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Test suite for the Gear Interface.
@@ -59,7 +67,7 @@ public class GearTest {
    */
   @Test
   public void testValidIsHeadGear() {
-    AbstractGear sample = (AbstractGear) sample2;
+    Gear sample = sample2;
     assertTrue(sample.isHeadGear());
   }
 
@@ -68,7 +76,8 @@ public class GearTest {
    */
   @Test
   public void testValidIsFootGear() {
-    AbstractGear sample = (AbstractGear) sample1;
+    Gear sample;
+    sample =  sample1;
     assertTrue(sample.isFootGear());
   }
 
@@ -77,7 +86,7 @@ public class GearTest {
    */
   @Test
   public void testValidIsPotion() {
-    AbstractGear sample = (AbstractGear) sample3;
+    Gear sample =  sample3;
     assertTrue(sample.isPotion());
   }
 
@@ -86,7 +95,7 @@ public class GearTest {
    */
   @Test
   public void testValidIsBelt() {
-    AbstractGear sample = (AbstractGear) sample4;
+    Gear sample =  sample4;
     assertTrue(sample.isBelt());
   }
 
@@ -95,7 +104,7 @@ public class GearTest {
    */
   @Test
   public void testInValidIsHeadGear() {
-    AbstractGear sample = (AbstractGear) sample1;
+    Gear sample =  sample1;
     assertFalse(sample.isHeadGear());
   }
 
@@ -104,7 +113,7 @@ public class GearTest {
    */
   @Test
   public void testInValidIsFootGear() {
-    AbstractGear sample = (AbstractGear) sample3;
+    Gear sample =  sample3;
     assertFalse(sample.isFootGear());
   }
 
@@ -113,7 +122,7 @@ public class GearTest {
    */
   @Test
   public void testInValidIsPotion() {
-    AbstractGear sample = (AbstractGear) sample4;
+    Gear sample =  sample4;
     assertFalse(sample.isPotion());
   }
 
@@ -122,7 +131,7 @@ public class GearTest {
    */
   @Test
   public void testInValidIsBelt() {
-    AbstractGear sample = (AbstractGear) sample2;
+    Gear sample =  sample2;
     assertFalse(sample.isBelt());
   }
 
@@ -131,10 +140,10 @@ public class GearTest {
    */
   @Test
   public void testHeadGearGivesConstitution() {
-    AbstractGear sample = (AbstractGear) sample5;
+    Gear sample =  sample5;
     assertTrue(sample.getAbilities().get(0).isConstitution());
     assertTrue(sample.givesConstitution());
-    assertEquals(3, sample.getAbilities().get(0).getValue());
+    assertEquals(3, sample.getAbilities().get(0).getMagnitude());
   }
 
   /**
@@ -142,10 +151,10 @@ public class GearTest {
    */
   @Test
   public void testFootGearGivesDexterity() {
-    AbstractGear sample = (AbstractGear) sample6;
+    Gear sample =  sample6;
     assertTrue(sample.getAbilities().get(0).isDexterity());
     assertTrue(sample.givesDexterity());
-    assertEquals(2, sample.getAbilities().get(0).getValue());
+    assertEquals(2, sample.getAbilities().get(0).getMagnitude());
   }
 
 }

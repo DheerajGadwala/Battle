@@ -1,7 +1,14 @@
 package battle;
 
-class Charisma extends AbstractAbility {
+/**
+ * This is a type of ability.
+ */
+public class Charisma extends AbstractAbility {
 
+  /**
+   * Creates a Charisma object with the given value.
+   * @param value magnitude of the ability.
+   */
   public Charisma(int value) {
     super(value);
   }

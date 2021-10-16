@@ -2,7 +2,12 @@ package battle;
 
 import java.util.List;
 
-interface Randomizer {
+/**
+ * This can be used to generate random or pseudo random numbers for objects which need them.
+ * This can generate numbers in a range.
+ * This can generate abilities with random values.
+ */
+public interface Randomizer {
 
   /**
    * Generates a random integer between a and b [inclusive].
@@ -24,7 +29,7 @@ interface Randomizer {
    * @param isDetrimental if the ability should be detrimental or not.
    * @return An abstract ability.
    */
-  AbstractAbility getAbility(boolean isDetrimental);
+  Ability getAbility(boolean isDetrimental);
 
   /**
    * Shuffles the given list of objects.
@@ -38,5 +43,5 @@ interface Randomizer {
    * @param beltSize size of the belt.
    * @return a random ability.
    */
-  AbstractAbility getBeltAbility(boolean isDetrimental, BeltSize beltSize);
+  Ability getBeltAbility(boolean isDetrimental, BeltSize beltSize);
 }

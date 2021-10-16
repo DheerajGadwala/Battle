@@ -2,10 +2,15 @@ package battle;
 
 /**
  * This is a container of Gears.
+ * Many Gears with various abilities are generated at random here.
  */
-class BagOfGears extends AbstractContainer {
+public class BagOfGears extends AbstractContainer {
 
-  BagOfGears(Randomizer randomizer) {
+  /**
+   * Creates a bag of gears object with the given randomizer used for generation of gears.
+   * @param randomizer A randomizer object
+   */
+  public BagOfGears(Randomizer randomizer) {
     super(randomizer);
   }
 
@@ -21,7 +26,7 @@ class BagOfGears extends AbstractContainer {
   private int generatePotions(int countMaintainer) {
     int n = this.randomizer.getIntBetween(15, 25);
     for (int i = 0; i < n; i++) {
-      this.container.add(new Potion("potion" + i, countMaintainer % 4 == 0));
+      this.container.add(new Potion("potion" + i, countMaintainer % 4 == 0, randomizer));
       countMaintainer++;
     }
     return countMaintainer;
@@ -32,7 +37,7 @@ class BagOfGears extends AbstractContainer {
     for (int i = 0; i < n; i++) {
       int r = this.randomizer.getIntBetween(0, 2);
       BeltSize b = r == 0 ? BeltSize.LARGE : r == 1 ? BeltSize.MEDIUM : BeltSize.SMALL;
-      this.container.add(new Belt("belt" + i, b, countMaintainer % 4 == 0));
+      this.container.add(new Belt("belt" + i, b, countMaintainer % 4 == 0, randomizer));
       countMaintainer++;
     }
     return countMaintainer;
@@ -41,7 +46,7 @@ class BagOfGears extends AbstractContainer {
   private int generateFootGear(int countMaintainer) {
     int n = this.randomizer.getIntBetween(5, 10);
     for (int i = 0; i < n; i++) {
-      this.container.add(new FootGear("FootGear" + i, countMaintainer % 4 == 0));
+      this.container.add(new FootGear("FootGear" + i, countMaintainer % 4 == 0, randomizer));
       countMaintainer++;
     }
     return countMaintainer;
@@ -50,7 +55,7 @@ class BagOfGears extends AbstractContainer {
   private int generateHeadGear(int countMaintainer) {
     int n = this.randomizer.getIntBetween(5, 10);
     for (int i = 0; i < n; i++) {
-      this.container.add(new HeadGear("HeadGear" + i, countMaintainer % 4 == 0));
+      this.container.add(new HeadGear("HeadGear" + i, countMaintainer % 4 == 0, randomizer));
       countMaintainer++;
     }
     return countMaintainer;

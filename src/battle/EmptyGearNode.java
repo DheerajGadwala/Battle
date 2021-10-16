@@ -1,9 +1,15 @@
 package battle;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-class EmptyGearNode implements GearList{
+class EmptyGearNode implements GearList {
+
+  @Override
+  public boolean isEmptyNode() {
+    return true;
+  }
 
   @Override
   public Gear get(int i) {
@@ -11,7 +17,7 @@ class EmptyGearNode implements GearList{
   }
 
   @Override
-  public boolean contains(AbstractGear gear) {
+  public boolean contains(Gear gear) {
     return false;
   }
 
@@ -31,13 +37,28 @@ class EmptyGearNode implements GearList{
   }
 
   @Override
-  public List<AbstractAbility> getAllAbilitiesHelper(List<AbstractAbility> abilities) {
+  public int totalHeadGears() {
+    return 0;
+  }
+
+  @Override
+  public int totalFootGears() {
+    return 0;
+  }
+
+  @Override
+  public int totalPotions() {
+    return 0;
+  }
+
+  @Override
+  public List<Ability> getAllAbilitiesHelper(List<Ability> abilities) {
     return null;
   }
 
   @Override
-  public List<AbstractAbility> getAllAbilities() {
-    return null;
+  public List<Ability> getAllAbilities() {
+    return new ArrayList<Ability>();
   }
 
   @Override
@@ -46,12 +67,12 @@ class EmptyGearNode implements GearList{
   }
 
   @Override
-  public GearList sort(Comparator<AbstractGear> comp) {
+  public GearList sort(Comparator<Gear> comp) {
     return this;
   }
 
   @Override
-  public GearList insert(AbstractGear gear, Comparator<AbstractGear> comp) {
+  public GearList insert(Gear gear, Comparator<Gear> comp) {
     return new GearNode(gear, this);
   }
 

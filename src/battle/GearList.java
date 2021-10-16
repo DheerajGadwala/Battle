@@ -1,19 +1,43 @@
 package battle;
 
-import java.util.List;
 import java.util.Comparator;
+import java.util.List;
 
 interface GearList {
 
   int count();
+
   Gear get(int i);
-  boolean contains(AbstractGear gear);
+
+  boolean contains(Gear gear);
+
   boolean containsHeadGear();
+
   boolean containsFootGear();
+
   int totalBeltUnits();
-  List<AbstractAbility> getAllAbilitiesHelper(List<AbstractAbility> abilities);
-  List<AbstractAbility> getAllAbilities();
-  GearList sort(Comparator<AbstractGear> comp);
-  GearList insert(AbstractGear gear, Comparator<AbstractGear> comp);
+
+  int totalHeadGears();
+
+  int totalFootGears();
+
+  int totalPotions();
+
+  List<Ability> getAllAbilitiesHelper(List<Ability> abilities);
+
+  List<Ability> getAllAbilities();
+
+  GearList sort(Comparator<Gear> comp);
+
+  GearList insert(Gear gear, Comparator<Gear> comp);
+
   StringBuilder toStringHelper();
+
+  default boolean isGearNode() {
+    return false;
+  }
+
+  default boolean isEmptyNode() {
+    return false;
+  }
 }

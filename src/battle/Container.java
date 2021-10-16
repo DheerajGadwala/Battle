@@ -6,7 +6,7 @@ package battle;
  * This can generate random objects.
  * This can return objects from itself.
  */
-interface Container {
+public interface Container {
 
   /**
    * To shuffle the objects inside the container.

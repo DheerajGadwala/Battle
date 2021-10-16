@@ -2,12 +2,20 @@ package battle;
 
 import java.util.List;
 
-class PseudoRandomizer implements Randomizer {
+/**
+ * This can be given to other objects to act as a random number generator.
+ * Ths has been used extensively for testing purposes.
+ */
+public class PseudoRandomizer implements Randomizer {
 
   int[] fakeRandom;
   int pointer;
 
-  PseudoRandomizer(int ...random) {
+  /**
+   * Creates a PseudoRandomizer object.
+   * @param random numbers to be returned.
+   */
+  public PseudoRandomizer(int... random) {
     this.fakeRandom = random;
     this.pointer = 0;
   }
@@ -23,7 +31,7 @@ class PseudoRandomizer implements Randomizer {
   }
 
   @Override
-  public AbstractAbility getAbility(boolean isDetrimental) {
+  public Ability getAbility(boolean isDetrimental) {
     int r = fakeRandom[pointer++];
     int val = fakeRandom[pointer++];
     if (r == 1) {
@@ -42,10 +50,11 @@ class PseudoRandomizer implements Randomizer {
 
   @Override
   public void shuffle(List<Object> list) {
+    return;
   }
 
   @Override
-  public AbstractAbility getBeltAbility(boolean isDetrimental, BeltSize beltSize) {
+  public Ability getBeltAbility(boolean isDetrimental, BeltSize beltSize) {
     return getAbility(isDetrimental);
   }
 }

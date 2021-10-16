@@ -1,11 +1,12 @@
 package battle;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 abstract class MultipleAbilityGear extends AbstractGear {
 
-  protected List<AbstractAbility> abilities;
+  protected List<Ability> abilities;
 
   protected MultipleAbilityGear(String name)
       throws IllegalArgumentException {
@@ -17,12 +18,12 @@ abstract class MultipleAbilityGear extends AbstractGear {
     super(name, random);
   }
 
-  @Override
-  public String getName() {
-    return this.name;
+  public MultipleAbilityGear(String name, Randomizer randomizer)
+      throws IllegalArgumentException {
+    super(name, randomizer);
   }
 
-  protected void setAbilities(AbstractAbility ...abilities) {
+  protected void setAbilities(Ability ...abilities) {
     this.abilities = Arrays.asList(abilities);
   }
 
@@ -35,15 +36,24 @@ abstract class MultipleAbilityGear extends AbstractGear {
     }
   }
 
+  @Override
+  public boolean hasMultipleAbilities() {
+    return true;
+  }
 
   @Override
-  public List<AbstractAbility> getAbilities() {
-    return abilities;
+  public List<Ability> getAbilities() {
+    List<Ability> ret = new ArrayList<>();
+    for (Ability a: abilities) {
+      ret.add(a); // Ability is immutable
+    }
+    return ret;
   }
+
 
   public int getMagnitude(int i) throws IllegalArgumentException {
     this.checkI(i);
-    return this.abilities.get(i).getValue();
+    return this.abilities.get(i).getMagnitude();
   }
 
   protected boolean givesCharisma(int i) {

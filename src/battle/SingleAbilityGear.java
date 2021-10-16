@@ -5,7 +5,7 @@ import java.util.List;
 
 abstract class SingleAbilityGear extends AbstractGear {
 
-  protected AbstractAbility ability;
+  protected Ability ability;
 
   protected SingleAbilityGear(String name)
       throws IllegalArgumentException {
@@ -16,21 +16,24 @@ abstract class SingleAbilityGear extends AbstractGear {
     super(name, random);
   }
 
-  protected void setAbility(AbstractAbility ability) {
+  public SingleAbilityGear(String name, Randomizer randomizer) {
+    super(name, randomizer);
+  }
+
+  protected void setAbility(Ability ability) {
     this.ability = ability;
   }
 
-  abstract int getAbilityMagnitude();
-
   @Override
-  public List<AbstractAbility> getAbilities() {
-    List<AbstractAbility> ret = new ArrayList<>();
-    ret.add(ability);
-    return ret;
+  public boolean hasOnlyOneAbility() {
+    return true;
   }
 
-  public String getName() {
-    return this.name;
+  @Override
+  public List<Ability> getAbilities() {
+    List<Ability> ret = new ArrayList<>();
+    ret.add(ability);
+    return ret;
   }
 
 }

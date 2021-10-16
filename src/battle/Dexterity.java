@@ -1,7 +1,13 @@
 package battle;
 
-class Dexterity extends AbstractAbility {
-
+/**
+ * This is a type of ability.
+ */
+public class Dexterity extends AbstractAbility {
+  /**
+   * Creates a dexterity object with the given magnitude.
+   * @param value magnitude of the ability.
+   */
   public Dexterity(int value) {
     super(value);
   }

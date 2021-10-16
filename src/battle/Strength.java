@@ -1,7 +1,14 @@
 package battle;
 
-class Strength extends AbstractAbility {
+/**
+ * This is a type of ability.
+ */
+public class Strength extends AbstractAbility {
 
+  /**
+   * Creates a Strength object with the given value.
+   * @param value magnitude of the ability.
+   */
   public Strength(int value) {
     super(value);
   }

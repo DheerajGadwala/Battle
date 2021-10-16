@@ -1,20 +1,45 @@
 package battle;
 
-class Potion extends SingleAbilityGear {
-
-  public Potion(String name, boolean isDetrimental) {
+/**
+ * Potion is a type of gear.
+ * A player can any number of potions.
+ * Potions might give any ability.
+ */
+public class Potion extends SingleAbilityGear {
+  /**
+   * Creates a potion object.
+   * @param name name of the potion
+   * @param isDetrimental if the ability of the potion is detrimental or not
+   * @throws IllegalArgumentException when name is null or empty
+   */
+  public Potion(String name, boolean isDetrimental) throws IllegalArgumentException {
     super(name);
     this.setAbility(randomizer.getAbility(isDetrimental));
   }
 
-  Potion(String name, boolean isDetrimental, int ...random) {
+  /**
+   * Creates a potion object with pseudo random abilities.
+   * @param name name of the potion
+   * @param isDetrimental if the ability of the potion is detrimental or not
+   * @param random random numbers.
+   * @throws IllegalArgumentException when name is empty or null
+   */
+  public Potion(String name, boolean isDetrimental, int... random)
+      throws IllegalArgumentException {
     super(name, random);
     this.setAbility(randomizer.getAbility(isDetrimental));
   }
 
-  @Override
-  public int getAbilityMagnitude() {
-    return this.ability.getValue();
+  /**
+   * Creates a potion object whose ability depends on the given randomizer.
+   * @param name name of the potion
+   * @param isDetrimental if the ability of the potion is detrimental or not
+   * @param randomizer a randomizer object
+   * @throws IllegalArgumentException when name is empty or null
+   */
+  public Potion(String name, boolean isDetrimental, Randomizer randomizer) {
+    super(name, randomizer);
+    this.setAbility(randomizer.getAbility(isDetrimental));
   }
 
   @Override
@@ -48,11 +73,10 @@ class Potion extends SingleAbilityGear {
   }
 
   @Override
-  public int compareTo(Gear o) {
-    if (this == o) {
+  public int compareTo(Gear that) {
+    if (this == that) {
       return 0;
     }
-    AbstractGear that = (AbstractGear) o;
     return that.compareTo(this);
   }
 

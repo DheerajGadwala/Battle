@@ -1,7 +1,13 @@
 package battle;
 
-class Constitution extends AbstractAbility {
-
+/**
+ * This is a type of ability.
+ */
+public class Constitution extends AbstractAbility {
+  /**
+   * Creates a Constitution object with the given magnitude.
+   * @param value magnitude of the ability.
+   */
   public Constitution(int value) {
     super(value);
   }
