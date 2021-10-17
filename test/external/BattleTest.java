@@ -3,7 +3,6 @@ package external;
 import battle.Battle;
 import battle.BattleArena;
 import battle.BattlePlayer;
-import battle.HeadGear;
 import battle.Player;
 import org.junit.Assert;
 import org.junit.Before;
@@ -38,33 +37,6 @@ public class BattleTest {
   @Test(expected = IllegalArgumentException.class)
   public void testAddPlayers_2() {
     sample1.addPlayers(null, new BattlePlayer("Kratos"));
-  }
-
-  /**
-   * Test showing that players who do not have base health
-   * as sum of their abilities can not be added to the arena.
-   */
-  @Test(expected = IllegalArgumentException.class)
-  public void testAddPlayers_3() {
-    Player a = new BattlePlayer("Dheeraj1", 18, 18, 18, 18, 1);
-    BattlePlayer b = new BattlePlayer("Dheeraj2", 18, 18, 18, 18, 10);
-    Assert.assertEquals(72, a.getHealth(), 0.01);
-    b.attack(a);
-    Assert.assertEquals(71, a.getHealth(), 0.01);
-    Battle c = new BattleArena();
-    c.addPlayers(a, b);
-  }
-
-  /**
-   * Test to show that players already having gear can not be added to the arena.
-   */
-  @Test(expected = IllegalArgumentException.class)
-  public void testAddPlayers_4() {
-    Player a = new BattlePlayer("Dheeraj1", 18, 18, 18, 18, 1);
-    BattlePlayer b = new BattlePlayer("Dheeraj2", 18, 18, 18, 18, 10);
-    b.equipGear(new HeadGear("Helm", false));
-    Battle c = new BattleArena();
-    c.addPlayers(a, b);
   }
 
   /**
@@ -172,8 +144,8 @@ public class BattleTest {
     sample.addPlayers(a, b);
     sample.fight();
     Assert.assertTrue(
-        sample.getWinner() == a.getName()
-            || sample.getWinner() == b.getName()
-            || sample.getWinner() == "draw");
+        sample.getWinnerNameOrDraw() == a.getName()
+            || sample.getWinnerNameOrDraw() == b.getName()
+            || sample.getWinnerNameOrDraw() == "draw");
   }
 }

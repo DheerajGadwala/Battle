@@ -227,7 +227,7 @@ public class BattlePlayer implements Player {
    * @param gear gear to be added
    * @throws IllegalArgumentException when gear can not be added.
    */
-  public void equipGear(Gear gear) throws IllegalArgumentException {
+  void equipGear(Gear gear) throws IllegalArgumentException {
     if (gear == null) {
       throw new IllegalArgumentException("gear can not be null");
     }
@@ -324,7 +324,7 @@ public class BattlePlayer implements Player {
    * Assigns a weapon to the player.
    * @param weapon a weapon
    */
-  public void assignWeapon(Weapon weapon) {
+  void assignWeapon(Weapon weapon) {
     if (!this.weapon.isFists()) {
       throw new IllegalStateException("Player already has a weapon.");
     }
@@ -334,6 +334,7 @@ public class BattlePlayer implements Player {
     this.weapon = weapon;
   }
 
+  @Override
   public Weapon getWeapon() {
     return this.weapon;
   }
@@ -347,7 +348,7 @@ public class BattlePlayer implements Player {
    * @param that the other player
    * @return the health removed from the other player.
    */
-  public double attack(Player that) {
+  double attack(Player that) {
     double totalDamage = 0;
     if (this.strikingPower() > that.avoidanceAbility()) {
       totalDamage = actualDamage(that);

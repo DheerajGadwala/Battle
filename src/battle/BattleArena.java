@@ -49,7 +49,7 @@ public class BattleArena implements Battle {
   }
 
   @Override
-  public String getWinner() {
+  public String getWinnerNameOrDraw() {
     if (winner == null) {
       return "draw";
     }

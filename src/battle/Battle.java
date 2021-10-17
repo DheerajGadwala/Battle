@@ -14,7 +14,7 @@ public interface Battle {
    * Returns the name of the winner or 'draw'.
    * @return a string representing the winner.
    */
-  String getWinner();
+  String getWinnerNameOrDraw();
 
   /**
    * Add players to the battle.

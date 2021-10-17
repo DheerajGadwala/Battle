@@ -17,7 +17,7 @@ abstract class AbstractGear implements Gear {
     this.name = name;
   }
 
-  public AbstractGear(String name, Randomizer randomizer) {
+  protected AbstractGear(String name, Randomizer randomizer) {
     this.randomizer = randomizer;
     constructionHelper(name);
     this.name = name;

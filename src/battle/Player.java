@@ -129,4 +129,10 @@ public interface Player {
    * @return an integer representing the number of belt units.
    */
   int getNumberOfBeltUnits();
+
+  /**
+   * Returns the weapon of the player.
+   * @return weapon
+   */
+  Weapon getWeapon();
 }
